@@ -1,0 +1,24 @@
+{
+  "name": "commom",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Scripts de uso comum a todas as APIS",
+  "main": "api.js",
+  "scripts": {
+    "test": "no tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/alcindo/apis.git"
+  },
+  "keywords": [],
+  "author": "Alcindo Schleder - Vocatio Telecom",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.4",
+    "commander": "^2.19.0",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.4.21",
+    "tracer": "^0.9.8"
+  }
+}
