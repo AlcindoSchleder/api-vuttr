@@ -68,12 +68,12 @@ class IDatabases {
     /**
      * Contructor of class
      */
-    constructor(tableName) {
+    constructor() {
         const Perm = new DBOperations();
         const Permissions = Perm.getValidPermissions();
         this.Permission = READ_PERM; // default Permission
         this.hasPerm = false;
-        this._tableName = tableName;
+        this._tableName = '';
         this._result = {};
     }
     /**
@@ -94,6 +94,22 @@ class IDatabases {
     set result(V) {
         this._result = V;
     }
+
+    /**
+     * Static Methods
+     */
+    static defineModel() {
+        throw new NotImplementedException();
+    }
+
+    static connect() {
+        throw new NotImplementedException();
+    }
+
+    /**
+     * Public Methods
+     */
+
     /**
      * Verifica se o flag está presente nas permissões do usuário
      * @param {Int} testPerm 

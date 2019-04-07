@@ -17,6 +17,7 @@
 const APATH = '/apiVuttr/v1.0.0';
 const BaseRoute = require('/opt/node/apis/commom/base/baseRoute');
 const Joi = require('joi');
+const Mongoose = require("mongoose");
 
 class ToolsRoutes extends BaseRoute {
     constructor(db) {
@@ -134,7 +135,7 @@ class ToolsRoutes extends BaseRoute {
                         authorization: Joi.string().required()
                     }).unknown(),
                     params: {
-                        id: Joi.object().required(),
+                        id: Joi.string().required(),
                     },
                     payload: {
                         title: Joi.string().default(null),
@@ -151,8 +152,9 @@ class ToolsRoutes extends BaseRoute {
                 if (!v.sttCode === 200) return v;
 
                 // 2) Update record
-                const data = request.payload;
-                return await this.db.update(request.params, data);
+                const data = this._removeNulls(request.payload);
+                const id = {_id: Mongoose.Types.ObjectId(request.params.id) };
+                return await this.db.update(id, data);
             }
         }
     }
@@ -170,7 +172,7 @@ class ToolsRoutes extends BaseRoute {
                         authorization: Joi.string().required()
                     }).unknown(),
                     params: {
-                        id: Joi.object().required(),
+                        id: Joi.string().required(),
                     }
                 }
             },
@@ -180,7 +182,8 @@ class ToolsRoutes extends BaseRoute {
                 if (!v.sttCode === 200) return v;
 
                 // 2) Delete record
-                return await this.db.delete(request.params);
+                const id = {_id: Mongoose.Types.ObjectId(request.params.id) };
+                return await this.db.delete(id);
             }
         };
     };

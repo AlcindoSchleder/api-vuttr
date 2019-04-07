@@ -26,11 +26,20 @@ class ContextStrategy extends IDatabases {
         this.result = Result.getResultModel('Creating Connection');
     };
 
-    isConnected() {
-        return this._database.isConnected();
-    };
-    connect() {
+    /**
+     * Static Methods
+     */
+    static defineModel() {
+        throw new NotImplementedException();
+    }
+    static connect() {
         return this._database.connect();
+    };
+    /**
+     * Public Methods
+     */
+    async isConnected() {
+        return await this._database.isConnected();
     };
     async insert(item) {
         try {

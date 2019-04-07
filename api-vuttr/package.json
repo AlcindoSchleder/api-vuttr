@@ -1,29 +1,26 @@
 {
-  "name": "idhost",
-  "version": "1.0.0",
-  "description": "pega a identificação da maquina local",
-  "main": "api.js",
-  "scripts": {
-    "test": "mocha tests/*.test.js"
-  },
-  "private": true,
-  "repository": {
-    "type": "git",
-    "url": "https://gitlab.com/alcindo/apis.git"
-  },
-  "author": "Alcindo Schleder",
-  "license": "ISC",
-  "dependencies": {
-    "hapi": "^18.1.0",
-    "hapi-auth-jwt2": "^8.3.0",
-    "hapi-swagger": "^9.4.2",
-    "inert": "^5.1.2",
-    "mongoose": "^5.4.22",
-    "restify": "^7.2.3",
-    "restify-cors-middleware": "^1.1.1",
-    "restify-error": "^1.0.0",
-    "sequelize": "^5.2.8",
-    "sqlite3": "^4.0.6",
-    "vision": "^5.4.4"
-  }
+    "name": "idhost",
+    "version": "1.0.0",
+    "description": "pega a identificação da maquina local",
+    "main": "api.js",
+    "scripts": {
+        "test": "mocha tests/*.test.js"
+    },
+    "private": true,
+    "repository": {
+        "type": "git",
+        "url": "https://gitlab.com/alcindo/apis.git"
+    },
+    "author": "Alcindo Schleder",
+    "license": "ISC",
+    "dependencies": {
+        "hapi": "^18.1.0",
+        "hapi-auth-jwt2": "^8.3.0",
+        "hapi-swagger": "^9.4.2",
+        "inert": "^5.1.2",
+        "vision": "^5.4.4",
+        "jsonwebtoken": "^8.4.0",
+        "mongoose": "^5.4.22",
+        "bcrypt": "^3.0.4"
+    }
 }

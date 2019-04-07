@@ -25,11 +25,33 @@ const STATUS = {
 class MongoDB extends IDatabases {
     
     constructor(connection, model) {
-        super(model.collection.name)
+        super();
+        this.tableName = model.collection.name;
         this._connection = connection;
         this._collection = model;
     }
 
+    /**
+     * Static Methods
+     */
+    static async defineModel(collectionName, schema) {
+        return Mongoose.model(collectionName, schema);
+    };
+    static connect(DSN) {
+        Mongoose.connect(DSN, {useNewUrlParser: true}, function (error) {
+            if (!error) return;
+            throw Exception('Erro: Erro quando tentando se conectar ao servidor! -> ' + error);
+        });
+        const connection = Mongoose.connection;
+        connection.once('open', () => {
+            return connection;
+        });
+        return connection;
+    }
+
+    /**
+     * Public Methods
+     */
     async isConnected() {
         const state = STATUS[this._connection.readyState]
         if (state === 'Conectado') return state;
@@ -41,26 +63,6 @@ class MongoDB extends IDatabases {
         return STATUS[this._connection.readyState]
 
     }
-
-    static async defineModel(connection, schema) {
-        const dbTable = schema.options.collection;
-        console.log('Database Table Name:', dbTable);
-        return Mongoose.model(dbTable, schema);
-    };
-
-    static connect(DSN) {
-        Mongoose.connect(DSN, {useNewUrlParser: true}, function (error) {
-            if (!error) return;
-            throw Exception('Erro: Erro quando tentando se conectar ao servidor! -> ' + error);
-        });
-        const connection = Mongoose.connection;
-        connection.once('open', () => {let data = 0});
-        return connection;
-    }
-
-    /**
-     * Public Methods
-     */
     async insert(item) {
         return this._collection.create(item);
     }

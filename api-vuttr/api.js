@@ -38,7 +38,7 @@ const Mongo = require('/opt/node/testes/commom/base/mongo/mongoDbStrategy');
  * importa os schemas de cada tabela 
  * a ser usadas nas rotas
  ****************************************/
-const ToolsSchema          = require('./src/db/schemas/toolsSchema');
+const ToolsSchema = require('./src/db/schemas/toolsSchema');
 /*****************************************
  * importa as rotas
  ****************************************/
@@ -57,9 +57,9 @@ const app = new Hapi.Server({
 
 async function main() {
     const connection = await Mongo.connect(DSN);
-    const ToolsModel = await Mongo.defineModel(connection, ToolsSchema);
+    const ToolsModel = await Mongo.defineModel('tools', ToolsSchema);
 
-    const MongoVuttr = new Context(new Mongo(connection, new ToolsModel()));
+    const MongoTools = new Context(new Mongo(connection, ToolsModel));
 
     const swaggerOptions = {
         info: {
@@ -84,7 +84,7 @@ async function main() {
         }
     ]);
     
-    const routes = await ApiUtils.mapRoutes(new Tools(MongoVuttr), Tools.methods());
+    const routes = await ApiUtils.mapRoutes(new Tools(MongoTools), Tools.methods());
 
     app.route(routes);
 
