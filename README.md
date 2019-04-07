@@ -41,9 +41,7 @@ Com exceção da documentação todas as rotas deve possuir um header com o toke
 
 ```json
 {
-    "headers": [
-        "authorization": "token de acesso"
-    ]
+    "headers": [{"authorization": "token de acesso"}]
 }
 ```
 
