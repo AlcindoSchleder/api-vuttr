@@ -62,7 +62,7 @@ class MongoDB extends IDatabases {
     /**
      * Public Methods
      */
-    async create(item) {
+    async insert(item) {
         return this._collection.create(item);
     }
     async browse(item = {}, skip = 0, limit = 10) {
