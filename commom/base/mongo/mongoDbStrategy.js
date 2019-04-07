@@ -65,7 +65,7 @@ class MongoDB extends IDatabases {
     async create(item) {
         return this._collection.create(item);
     }
-    async read(item = {}, skip = 0, limit = 10) {
+    async browse(item = {}, skip = 0, limit = 10) {
         return this._collection.find(item).skip(skip).limit(limit);
     }
     async update(id, item) {
