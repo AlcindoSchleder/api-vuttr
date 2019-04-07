@@ -109,7 +109,7 @@ class APIUtils {
         return (time + "").toHHMMSS();
     }
     static genDSN(obj) {
-        return obj.dialect + '://' + obj.user + ':' +  obj.pwd + '@' + obj.host + ':' + obj.port + '/' + obj.database;
+        return obj.dialect + '://' + encodeURIComponent(obj.user) + ':' +  encodeURIComponent(obj.pwd) + '@' + obj.host + ':' + obj.port + '/' + obj.database;
     } 
 };
 module.exports = APIUtils;

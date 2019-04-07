@@ -22,7 +22,8 @@ class ContextStrategy extends IDatabases {
     constructor(database) {
         super();
         this._database = database;
-        this._result = {};
+        this.tableName = database.tableName;
+        this.result = Result.getResultModel('Creating Connection');
     };
 
     isConnected() {
@@ -33,71 +34,71 @@ class ContextStrategy extends IDatabases {
     };
     async insert(item) {
         try {
-            this._result = Result.getResultModel('Insert Registry');
-            this._result.data = await this._database.insert(item);
-            this._result.status = {
+            this.result = Result.getResultModel('Insert Registry');
+            this.result.data = await this._database.insert(item);
+            this.result.status = {
                 sttCode: 200,
                 sttMsgs: 'Registry Inserted Successfully!'
             };
         }
         catch (error) {
-            this._result.status = {
+            this.result.status = {
                 sttCode: 500,
                 sttMsgs: 'Error Inserting Registry: ' + error
             };
         };
-        return this._result;
+        return this.result;
     };
     async browse(item, skip, limit) {
         try {
-            this._result = Result.getResultModel('List Registry');
-            this._result.data = await this._database.browse(item, skip, limit);
-            this._result.status = {
+            this.result = Result.getResultModel('List Registry');
+            this.result.data = await this._database.browse(item, skip, limit);
+            this.result.status = {
                 sttCode: 200,
                 sttMsgs: 'List of Registrations Successfully Completed!'
             };
         }
         catch (error) {
-            this._result.status = {
+            this.result.status = {
                 sttCode: 500,
                 sttMsgs: 'Error Listing Records: ' + error
             };
         };
-        return this._result;
+        return this.result;
     };
     async update(aWhere, item) {
         try {
-            this._result = Result.getResultModel('Update Registry');
-            this._result.data = await this._database.update(aWhere, item);
-            this._result.status = {
+            this.result = Result.getResultModel('Update Registry');
+            this.result.data = await this._database.update(aWhere, item);
+            this.result.status = {
                 sttCode: 200,
                 sttMsgs: `Registry Updated Successfully!`,
             };
         }
         catch (error) {
-            this._result.status = {
+            this.result.status = {
                 sttCode: 500,
                 sttMsgs: 'Error Updating Registry: ' + error
             };
         };
-        return this._result;
+        return this.result;
     };
     async delete(aWhere) {
         try {
-            this._result = Result.getResultModel('Delete Registry');
-            this._result.data = await this._database.delete(aWhere);
-            this._result.status = {
+            this.result = Result.getResultModel('Delete Registry');
+            this.result.data = await this._database.delete(aWhere);
+            this.result.status = {
                 sttCode: 200,
                 sttMsgs: `Registry Deleted Successfully!`
             };
         }
         catch (error) {
-            this._result.status = {
+            this.result.status = {
                 sttCode: 500,
                 sttMsgs: 'Error Deleting Registry: ' + error
             };
         };
-        return this._result;
+        return this.result;
     };
 };
 module.exports = ContextStrategy;

@@ -14,7 +14,7 @@
 
 "use strict"
 
-const ICrud = require('../base/interfaceDb')
+const IDatabases = require('../../base/interfaceDb')
 const Mongoose = require('mongoose')
 const STATUS = {
     0: 'Desconectado',
@@ -22,15 +22,15 @@ const STATUS = {
     2: 'Conectando',
     3: 'Desconectando',
 }
-class MongoDB extends ICrud {
-    // 3o
+class MongoDB extends IDatabases {
+    
     constructor(connection, schema) {
         super()
-        // 4o
+        this.tableName = schema.collection.name;
         this._connection = connection;
         this._collection = schema;
     }
-    // 2o
+
     async isConnected() {
         const state = STATUS[this._connection.readyState]
         if (state === 'Conectado') return state;
@@ -42,19 +42,26 @@ class MongoDB extends ICrud {
         return STATUS[this._connection.readyState]
 
     }
-     // 1o 
+
+    static async defineModel(connection, schema) {
+        return Mongoose.model(schema.options.collection, schema);
+    };
+
     static connect(DSN) {
         Mongoose.connect(DSN, {
             useNewUrlParser: true
         }, function (error) {
             if (!error) return;
-            console.log('Falha na conexão!', error)
+            throw Exception('Erro: Erro quando tentando se conectar ao servidor! -> ' + error);
         });
         const connection = Mongoose.connection;
-        connection.once('open', () => console.log('database rodando!!'));
+        connection.once('open', () => {let data = 0});
         return connection;
     }
 
+    /**
+     * Public Methods
+     */
     async create(item) {
         return this._collection.create(item);
     }
@@ -64,10 +71,8 @@ class MongoDB extends ICrud {
     async update(id, item) {
         return this._collection.updateOne({_id: id}, { $set: item});
     }
-    
     async delete(id) {
         return this._collection.deleteOne({_id: id});
     }
 }
-
 module.exports = MongoDB

@@ -120,6 +120,41 @@ class ToolsRoutes extends BaseRoute {
             }
         }
     }
+    insert() {
+        return {
+            path: APATH + '/toolsmany',
+            method: 'POST',
+            config: {
+                tags: ['api'],
+                description: 'Cadastrar ferramentas',
+                notes: 'Necessário um token de acesso para chamada desta função!',
+                validate: {
+                    failAction: this._failAction,
+                    headers: Joi.object({
+                        authorization: Joi.string().required()
+                    }).unknown(),
+                    payload: [{
+                        title: Joi.string().min(5).required(),
+                        link: Joi.string().uri().required(),
+                        description: Joi.string().min(10).required(),
+                        tags: Joi.array().required()
+                    }]
+                }
+            },
+            handler: (request, headers) => {
+                // 1) Token Access Validate
+                const v = this._validateToken(headers.authorization, request.method);
+                if (!v.sttCode === 200) return v;
+
+                // 2) get Fields
+                request.payload.array.forEach(async element => {
+                    // 3) insertRecord
+                    return await this.db.insert(element);            
+                });
+        
+            }
+        }
+    }
     update() {
         return {
             path: APATH + '/tools/{id}',
@@ -187,3 +222,29 @@ class ToolsRoutes extends BaseRoute {
 
 };
 module.exports = ToolsRoutes;
+// use admin
+//
+// db.createUser(
+//     {
+//         user: "admin",
+//         pwd: "2203_90Am10@Mgr",
+//         roles: [ 
+//             "userAdminAnyDatabase",
+//             "dbAdminAnyDatabase",
+//             "readWriteAnyDatabase"
+//         ]
+//     }
+// )
+
+// use api-vuttr
+// 
+// db.createUser(
+//     {
+//         user: "sysdba",
+//         pwd: "S76%$00_dba",
+//         roles: [{
+//             role: "readWrite",
+//             db: "api-vuttr"
+//         }]
+//     }
+// )

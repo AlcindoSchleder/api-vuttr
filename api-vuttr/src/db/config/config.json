@@ -1,34 +1,34 @@
 {
     "local": {
-        "host": "localhost",
+        "host": "192.168.100.10",
         "port": "27017",
-        "database": "api-vuttr.db",
+        "database": "api-vuttr",
         "dialect": "mongodb",
-        "user": "sysdab",
+        "user": "sysdba",
         "pwd": "S76%$00_dba"
     },
     "development": {
-        "host": "localhost",
+        "host": "192.168.100.10",
         "port": "27017",
-        "database": "api-vuttr.db",
+        "database": "api-vuttr",
         "dialect": "mongodb",
-        "user": "sysdab",
+        "user": "sysdba",
         "pwd": "S76%$00_dba"
      },
      "test": {
-        "host": "localhost",
+        "host": "192.168.100.10",
         "port": "27017",
-        "database": "api-vuttr.db",
+        "database": "api-vuttr",
         "dialect": "mongodb",
-        "user": "sysdab",
+        "user": "sysdba",
         "pwd": "S76%$00_dba"
     },
     "production": {
-        "host": "localhost",
+        "host": "192.168.100.10",
         "port": "27017",
-        "database": "api-vuttr.db",
+        "database": "api-vuttr",
         "dialect": "mongodb",
-        "user": "sysdab",
+        "user": "sysdba",
         "pwd": "S76%$00_dba"
     }
 }  

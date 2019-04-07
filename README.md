@@ -181,7 +181,7 @@ A resposta, em caso de sucesso, é o mesmo objeto, com as informações atualiza
 
 ```bash
 git clone https://github.com/AlcindoSchleder/api-vuttr.git
-cd api-vuttr \
+cd api-vuttr 
 npm install
 ```
 
