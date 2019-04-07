@@ -59,7 +59,7 @@ async function main() {
     const connection = await Mongo.connect(DSN);
     const ToolsModel = await Mongo.defineModel(connection, ToolsSchema);
 
-    const MongoVuttr = new Context(new Mongo(connection, ToolsModel));
+    const MongoVuttr = new Context(new Mongo(connection, new ToolsModel()));
 
     const swaggerOptions = {
         info: {

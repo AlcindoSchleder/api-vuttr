@@ -187,29 +187,3 @@ class ToolsRoutes extends BaseRoute {
 
 };
 module.exports = ToolsRoutes;
-// use admin
-//
-// db.createUser(
-//     {
-//         user: "admin",
-//         pwd: "2203_90Am10@Mgr",
-//         roles: [ 
-//             "userAdminAnyDatabase",
-//             "dbAdminAnyDatabase",
-//             "readWriteAnyDatabase"
-//         ]
-//     }
-// )
-
-// use api-vuttr
-// 
-// db.createUser(
-//     {
-//         user: "sysdba",
-//         pwd: "S76%$00_dba",
-//         roles: [{
-//             role: "readWrite",
-//             db: "api-vuttr"
-//         }]
-//     }
-// )

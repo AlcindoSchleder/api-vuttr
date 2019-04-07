@@ -24,11 +24,10 @@ const STATUS = {
 }
 class MongoDB extends IDatabases {
     
-    constructor(connection, schema) {
-        super()
-        this.tableName = schema.collection.name;
+    constructor(connection, model) {
+        super(model.collection.name)
         this._connection = connection;
-        this._collection = schema;
+        this._collection = model;
     }
 
     async isConnected() {
@@ -44,13 +43,13 @@ class MongoDB extends IDatabases {
     }
 
     static async defineModel(connection, schema) {
-        return Mongoose.model(schema.options.collection, schema);
+        const dbTable = schema.options.collection;
+        console.log('Database Table Name:', dbTable);
+        return Mongoose.model(dbTable, schema);
     };
 
     static connect(DSN) {
-        Mongoose.connect(DSN, {
-            useNewUrlParser: true
-        }, function (error) {
+        Mongoose.connect(DSN, {useNewUrlParser: true}, function (error) {
             if (!error) return;
             throw Exception('Erro: Erro quando tentando se conectar ao servidor! -> ' + error);
         });

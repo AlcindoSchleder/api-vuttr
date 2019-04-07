@@ -68,12 +68,12 @@ class IDatabases {
     /**
      * Contructor of class
      */
-    constructor() {
+    constructor(tableName) {
         const Perm = new DBOperations();
         const Permissions = Perm.getValidPermissions();
         this.Permission = READ_PERM; // default Permission
         this.hasPerm = false;
-        this._tableName = '';
+        this._tableName = tableName;
         this._result = {};
     }
     /**
