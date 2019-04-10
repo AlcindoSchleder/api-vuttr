@@ -197,9 +197,35 @@ npm test
 
 ### Docker
 
-#### Iniciar containers (aplicação + mongo)
+#### Rodar a imagem pronta (via docker)
+
+Basta usar o docker run para rodar a imagem pronta
+docker run -d --restart=always --name api_mongo -p 27017:27017 \
+    -v /opt/docker-image/data:/opt/data \
+    -v /var/log/mongo:/var/log/mongo \
+    -it alcindo/api_mongo:1.0
+
+docker run -d --restart=always --name api_vuttr -p 3000:3000 --links api_mongo \
+    -v /opt/docker-image/api:/opt/node \
+    -it alcindo/api_vuttr:1.0
+
+#### Build & preparacao para deploy (via docker)
+
+(Opcional)
+
+Necessário estar logado com uma conta docker
 
 ```bash
-docker pull alcindo/api-vuttr
+docker build -f docker/server.dockerfile -t alcindo/api_vuttr .
+docker build -f docker/mongo.dockerfile -t alcindo/api_mongo .
+docker push seu_usuario/api_vuttr:1.0
+docker push seu_usuario/api_mongo:1.0
+```
+
+#### Iniciar containers compose (aplicação + mongo com docker-compose)
+
+```bash
+docker pull alcindo/api-vuttr:1.0
+docker pull alcindo/api-mongo:1.0
 docker-compose up -d
 ```

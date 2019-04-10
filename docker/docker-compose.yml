@@ -7,14 +7,14 @@ services:
             context: ./bin/server
         container_name: 'apitest'
         restart: "always"
-        volumes:
-            - /opt/node/api:/opt/node
         working_dir: /opt/node
         environment:
             - NODE_ENV=development
             - APPLICATION_DIR=/opt/node/api-vuttr
             - APPLICATION_CMM_DIR=/opt/node/commom
             - NODE_API_DIR=/opt/node/api-vuttr
+        volumes:
+            - /opt/docker/api:/opt/node
         links:
             - mongo
         ports:
@@ -27,11 +27,12 @@ services:
         build:
             context: ./bin/mongodb
         container_name: "mongodb"
+        restart: "always"
         environment:
             - MONGODB_DATA_DIR=/opt/node/testes/data/mongo
             - MONGODB_LOG_DIR=/var/log/mongo
         volumes:
-            - ${MONGODB_DATA_DIR-/opt/node/testes/data/mongo}:/opt/node/testes/data/mongo
+            - ${MONGODB_DATA_DIR-/opt/docker/data/mongo}:/opt/data/mongo
             - ${MONGODB_LOG_DIR-/var/log/mongo}:/var/log/mongo
         ports:
             - 27017:27017
