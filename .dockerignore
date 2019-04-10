@@ -1,0 +1,7 @@
+api-vuttr/node_modules
+Dockerfile
+.dockerignore
+data
+docker
+.git
+.gitignore

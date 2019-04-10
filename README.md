@@ -6,7 +6,7 @@ description: 'Descrição de uma aplicação VUTTR.'
 
 Simples API usando node + hapi + jwt + swagger + mongoose + mongoDB
 
-A API responde na porta 10880 e segue um estilo de arquitetura REST.
+A API responde na porta 3000 e segue um estilo de arquitetura REST.
 
 Há rotas para listar, filtrar, cadastrar e remover documentos MongoDB representando ferramentas, seguindo o schema:
 
@@ -186,7 +186,7 @@ npm install
 ### Execução local
 
 ```bash
-npm run dev
+forever start api.js
 ```
 
 ### Testes
@@ -196,17 +196,6 @@ npm test
 ```
 
 ### Docker
-
-#### Build & preparacao para deploy (via docker)
-
-(Opcional)
-
-Necessário estar logado com uma conta docker
-
-```bash
-docker build -f docker/server.dockerfile -t alcindo/api-vuttr .
-docker push alcindo/api-vuttr
-```
 
 #### Iniciar containers (aplicação + mongo)
 

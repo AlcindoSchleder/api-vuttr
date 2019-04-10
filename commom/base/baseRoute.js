@@ -14,11 +14,11 @@
 
 "use strict"
 
-const ACONST = require('/opt/node/apis/commom/consts');
+const ACONST = require('../consts');
 const fs = require('fs');
-const ApiUtils = require('/opt/node/apis/commom/utils')
-const ValidateToken = require('/opt/node/apis/commom/validateToken');
-const httpHelper = require('/opt/node/apis/commom/helpers/callHttp');
+const ApiUtils = require('../utils')
+const ValidateToken = require('..//validateToken');
+const httpHelper = require('../helpers/callHttp');
 
 const PRIVATE_KEY = fs.readFileSync('/etc/vktioapi/private.key', "utf8").toString("utf8");
 const SECRET_PHRASE = ApiUtils.getPhrase(PRIVATE_KEY);

@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+    server:
+        image: node:lts-alpine
+        build:
+            context: ./bin/server
+        container_name: 'apitest'
+        restart: "always"
+        volumes:
+            - /opt/node/api:/opt/node
+        working_dir: /opt/node
+        environment:
+            - NODE_ENV=development
+            - APPLICATION_DIR=/opt/node/api-vuttr
+            - APPLICATION_CMM_DIR=/opt/node/commom
+            - NODE_API_DIR=/opt/node/api-vuttr
+        links:
+            - mongo
+        ports:
+            - 3000:3000
+        expose:
+            - 3000/tcp
+        command: node /opt/node/api-vuttr/api.js
+    mongo:
+        image: mongo:latest
+        build:
+            context: ./bin/mongodb
+        container_name: "mongodb"
+        environment:
+            - MONGODB_DATA_DIR=/opt/node/testes/data/mongo
+            - MONGODB_LOG_DIR=/var/log/mongo
+        volumes:
+            - ${MONGODB_DATA_DIR-/opt/node/testes/data/mongo}:/opt/node/testes/data/mongo
+            - ${MONGODB_LOG_DIR-/var/log/mongo}:/var/log/mongo
+        ports:
+            - 27017:27017
+        expose:
+            - 27017/tcp
+        command: mongod --logpath=/var/log/mongo --auth

@@ -15,7 +15,7 @@
 "use strict"
 
 const APATH = '/apiVuttr/v1.0.0';
-const BaseRoute = require('/opt/node/apis/commom/base/baseRoute');
+const BaseRoute = require('../../../commom/base/baseRoute');
 const Joi = require('joi');
 const Mongoose = require("mongoose");
 

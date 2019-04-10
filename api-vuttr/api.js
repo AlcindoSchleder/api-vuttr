@@ -32,8 +32,8 @@ const DSN = (
  * importa os scripts para gestão do banco de dados 
  * a ser usadas nas rotas
  ****************************************/
-const Context = require('/opt/node/testes/commom/base/contextStrategy');
-const Mongo = require('/opt/node/testes/commom/base/mongo/mongoDbStrategy');
+const Context = require('../commom/base/contextStrategy');
+const Mongo = require('../commom/base/mongo/mongoDbStrategy');
 /*****************************************
  * importa os schemas de cada tabela 
  * a ser usadas nas rotas
@@ -45,7 +45,7 @@ const ToolsSchema = require('./src/db/schemas/toolsSchema');
 const Tools = require('./src/routes/toolsRoutes');
 
 const app = new Hapi.Server({
-    port: 10880,
+    port: 3000,
     routes: {
         cors: {
             origin: ["*"],

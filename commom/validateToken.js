@@ -16,7 +16,7 @@
 
 "use strict"
 
-const ACONST = require('/opt/node/apis/commom/consts');
+const ACONST = require('./consts');
 const Jwt = require('jsonwebtoken');
 const HttpHelper = require('./helpers/callHttp')
 
