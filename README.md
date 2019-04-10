@@ -200,6 +200,8 @@ npm test
 #### Rodar a imagem pronta (via docker)
 
 Basta usar o docker run para rodar a imagem pronta
+
+```bash
 docker run -d --restart=always --name api_mongo -p 27017:27017 \
     -v /opt/docker-image/data:/opt/data \
     -v /var/log/mongo:/var/log/mongo \
@@ -208,6 +210,7 @@ docker run -d --restart=always --name api_mongo -p 27017:27017 \
 docker run -d --restart=always --name api_vuttr -p 3000:3000 --links api_mongo \
     -v /opt/docker-image/api:/opt/node \
     -it alcindo/api_vuttr:1.0
+```
 
 #### Build & preparacao para deploy (via docker)
 
