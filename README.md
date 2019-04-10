@@ -180,13 +180,12 @@ A resposta, em caso de sucesso, é o mesmo objeto, com as informações atualiza
 Para instalar este aplicativo localmente em uma máquina devemos ter previamente instalados
 alguns pacotes no seu SO, que são:
 
--1 **Node.js:** versão 10 ou maior;
--2 **Mongodb:** versão 4.0 ou maior;
--3 **Ferramentas auxiliares:** Após os passos 1 e 2 atualizar e instalar as ferramentas do node.js:
-
-  --npm (gerenciador de pacotes node), 
-  --mocha (ferramenta de testes unitários),
-  --forever (ferramenta de monitoramento da aplicação)
+1. *Node.js:* versão 10 ou maior;
+2. *Mongodb:* versão 4.0 ou maior;
+3. *Ferramentas auxiliares:* Após os passos 1 e 2 atualizar e instalar as ferramentas do node.js:
+  - npm (gerenciador de pacotes node), 
+  - mocha (ferramenta de testes unitários),
+  - forever (ferramenta de monitoramento da aplicação)
 
 ```bash
 npm install -g npm
