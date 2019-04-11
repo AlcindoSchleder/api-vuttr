@@ -42,6 +42,7 @@ const ToolsSchema = require('./src/db/schemas/toolsSchema');
 /*****************************************
  * importa as rotas
  ****************************************/
+const genToken = require('./src/routes/genTokenRoutes');
 const Tools = require('./src/routes/toolsRoutes');
 
 const app = new Hapi.Server({
@@ -84,7 +85,10 @@ async function main() {
         }
     ]);
     
-    const routes = await ApiUtils.mapRoutes(new Tools(MongoTools), Tools.methods());
+    const routes = [
+        ...await ApiUtils.mapRoutes(new genToken(), genToken.methods()),
+        ...await ApiUtils.mapRoutes(new Tools(MongoTools), Tools.methods())
+    ];
 
     app.route(routes);
 

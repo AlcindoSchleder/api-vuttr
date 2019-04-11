@@ -44,4 +44,4 @@ VOLUME /opt/node
 EXPOSE 3000
 
 # Container Main Process
-ENTRYPOINT [ "node", "/opt/node/api-vuttr/api.js" ]
+ENTRYPOINT [ "node", "/opt/node/api-vuttr/api.js", "&" ]

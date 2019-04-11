@@ -2,40 +2,40 @@ version: "3"
 
 services:
     server:
-        image: node:lts-alpine
+        image: node:10-alpine
         build:
             context: ./bin/server
-        container_name: 'apitest'
+        container_name: 'api_vuttr'
         restart: "always"
         working_dir: /opt/node
         environment:
-            - NODE_ENV=development
+            - NODE_ENV=test
             - APPLICATION_DIR=/opt/node/api-vuttr
             - APPLICATION_CMM_DIR=/opt/node/commom
             - NODE_API_DIR=/opt/node/api-vuttr
         volumes:
-            - /opt/docker/api:/opt/node
+            - /opt/node/api:/opt/node
         links:
             - mongo
         ports:
             - 3000:3000
         expose:
             - 3000/tcp
-        command: node /opt/node/api-vuttr/api.js
+        command: node /opt/node/api-vuttr/api.js &
     mongo:
-        image: mongo:latest
+        image: alpine:edge
         build:
             context: ./bin/mongodb
-        container_name: "mongodb"
+        container_name: "api_mongodb"
         restart: "always"
         environment:
-            - MONGODB_DATA_DIR=/opt/data
-            - MONGODB_LOG_DIR=/var/log/mongo
+            - MONGODB_DATA=/opt/data
+            - MONGODB_LOG=/var/log/mongo
         volumes:
-            - ${MONGODB_DATA_DIR-/opt/data/mongo}:/opt/data
-            - ${MONGODB_LOG_DIR-/var/log/mongo}:/var/log/mongo
+            - ${MONGODB_DATA-/opt/data/mongo}:/opt/data
+            - ${MONGODB_LOG-/var/log/mongo}:/var/log/mongo
         ports:
             - 27017:27017
         expose:
             - 27017/tcp
-        command: mongod --logpath=/var/log/mongo --auth
+        command: mongod --dbpath /opt/data --logpath=/var/log/mongo --auth &

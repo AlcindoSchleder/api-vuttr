@@ -33,4 +33,4 @@ VOLUME /var/log/mongo
 EXPOSE 27017
 
 # Set main program mongod process
-ENTRYPOINT [ "mongod", "--dbpath", "/opt/data", "--logpath", "/var/log/mongo/mongodb.log", "--auth" "&" ]
+ENTRYPOINT [ "mongod", "--dbpath", "/opt/data", "--logpath", "/var/log/mongo/mongodb.log", "--auth", "&" ]
