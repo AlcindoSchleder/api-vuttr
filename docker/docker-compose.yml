@@ -29,10 +29,10 @@ services:
         container_name: "mongodb"
         restart: "always"
         environment:
-            - MONGODB_DATA_DIR=/opt/node/testes/data/mongo
+            - MONGODB_DATA_DIR=/opt/data
             - MONGODB_LOG_DIR=/var/log/mongo
         volumes:
-            - ${MONGODB_DATA_DIR-/opt/docker/data/mongo}:/opt/data/mongo
+            - ${MONGODB_DATA_DIR-/opt/data/mongo}:/opt/data
             - ${MONGODB_LOG_DIR-/var/log/mongo}:/var/log/mongo
         ports:
             - 27017:27017

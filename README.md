@@ -237,13 +237,13 @@ docker run -d --restart=always --name api_vuttr -p 3000:3000 --links api_mongo \
 Necessário estar logado com uma conta docker
 
 ```bash
-docker build -f docker/server.dockerfile -t alcindo/api_vuttr .
-docker build -f docker/mongo.dockerfile -t alcindo/api_mongo .
+docker build -f docker/server.dockerfile -t seu_usuario/api_vuttr:1.0 .
+docker build -f docker/mongo.dockerfile -t seu_usuario/api_mongo:1.0 .
 docker push seu_usuario/api_vuttr:1.0
 docker push seu_usuario/api_mongo:1.0
 ```
 
-#### Iniciar containers compose (aplicação + mongo com docker-compose)
+#### Iniciar containers com compose (aplicação + mongo)
 
 ```bash
 docker pull alcindo/api-vuttr:1.0

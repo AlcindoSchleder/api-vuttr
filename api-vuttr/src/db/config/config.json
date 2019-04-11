@@ -1,6 +1,6 @@
 {
     "local": {
-        "host": "192.168.100.10",
+        "host": "localhost",
         "port": "27017",
         "database": "api-vuttr",
         "dialect": "mongodb",
@@ -16,7 +16,7 @@
         "pwd": "S76%$00_dba"
      },
      "test": {
-        "host": "192.168.100.10",
+        "host": "mongodb",
         "port": "27017",
         "database": "api-vuttr",
         "dialect": "mongodb",
@@ -24,7 +24,7 @@
         "pwd": "S76%$00_dba"
     },
     "production": {
-        "host": "192.168.100.10",
+        "host": "mongodb.vocatio.com.br",
         "port": "27017",
         "database": "api-vuttr",
         "dialect": "mongodb",

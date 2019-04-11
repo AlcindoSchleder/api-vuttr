@@ -4,8 +4,7 @@
 FROM node:10-alpine
 
 # create application directories
-RUN echo "alias l='ls -al --color'" >> /root/.bashrc \
-    && mkdir /opt/node \
+RUN && mkdir /opt/node \
     && mkdir /opt/node/api-vuttr \
     && mkdir /opt/node/commom \
     && mkdir /etc/vktioapi \
@@ -30,7 +29,7 @@ LABEL   Author="Alcindo Schleder<alcindoschleder@gmail.com>" \
 ENV APPLICATION_DIR=/opt/node/api-vuttr
 ENV APPLICATION_CMM_DIR=/opt/node/commom
 ENV NODE_API_DIR=/opt/node/api-vuttr
-ENV NODE_ENV=development
+ENV NODE_ENV=test
 
 # this install node.js libraries and update npm if need and all dependencies to run app
 RUN npm install -g npm \
