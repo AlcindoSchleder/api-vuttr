@@ -49,7 +49,7 @@ As rotas são as seguintes:
 
 1. **DOCS** /documentation *- Mostra uma documentação funcional com os parâmetros de cada rota*
 
-2. **GET** /get_user_token *- Gera o access token para um usuário*
+2. **GET** /get_user_token *- Gera o access token para o usuário informado em userSigned*
     
     * Parâmetros:
         * username: ApiVuttr
