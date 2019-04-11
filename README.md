@@ -58,8 +58,13 @@ As rotas são as seguintes:
     * Resultado:
         * Token de acesso do cliente
 ```bash
-http://localhost:3000/get_user_token?username=ApiVuttr&password=1234567890&userSigned=nomedousuario
+http://localhost:3000/apiVuttr/v1.0.0/get_user_token?username=ApiVuttr&password=1234567890&userSigned=usario1
+
+result:
+{"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTEwLCJpc3N1ZXIiOiJBcGlWdXR0ciIsInVzZXJOYW1lIjoidXN1YXJpbzEiLCJlbW1pdGVkQXQiOjE1NTQ5ODM4NDA4OTcsImV4cGlyZUF0IjoxNTU3NTc1ODQwODk3LCJpYXQiOjE1NTQ5ODM4NDB9.FaNZrTYK3WoViY2OJkSLakLVsRIUASJV26ywWbMBJso"}
+
 ```
+Use https://jwt.io/ para verificar o conteúdo do token
 
 3. **GET** /tools *- lista todas as ferramentas cadastradas*
 
