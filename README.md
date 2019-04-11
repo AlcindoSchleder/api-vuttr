@@ -49,8 +49,19 @@ As rotas são as seguintes:
 
 1. **DOCS** /documentation *- Mostra uma documentação funcional com os parâmetros de cada rota*
 
+2. **GET** /get_user_token *- Gera o access token para um usuário*
+    
+    * Parâmetros:
+        * username: ApiVuttr
+        * password: 1234567890
+        * userSigned: NomeDoUsuário
+    * Resultado:
+        * Token de acesso do cliente
+```bash
+http://localhost:3000/get_user_token?username=ApiVuttr&password=1234567890&userSigned=nomedousuario
+```
 
-2. **GET** /tools *- lista todas as ferramentas cadastradas*
+3. **GET** /tools *- lista todas as ferramentas cadastradas*
 
 ```json
 [
@@ -98,7 +109,7 @@ As rotas são as seguintes:
 ]
 ```
 
-2. **GET** /tools?tag=publicidade&title=Snam *- filtra ferramentas utilizando uma busca por qualquer campo do schema
+4. **GET** /tools?tag=publicidade&title=Snam *- filtra ferramentas utilizando uma busca por qualquer campo do schema
 
 ```json
 [
@@ -118,7 +129,7 @@ As rotas são as seguintes:
 ]
 ```
 
-3. **POST** /tools Content-Type: application/json *- cadastra uma nova ferramenta*
+5. **POST** /tools Content-Type: application/json *- cadastra uma nova ferramenta*
 
 O corpo da requisição deve conter as informações da ferramenta a ser cadastrada, sem o ID (gerado automaticamente pelo servidor). 
 
@@ -143,13 +154,13 @@ A resposta, em caso de sucesso, é o mesmo objeto, com seu novo ID gerado.
 }
 ```
 
-4. **DELETE** /tools/:id *- remove uma ferramenta através de seu ID*
+6. **DELETE** /tools/:id *- remove uma ferramenta através de seu ID*
 
 ```json
 {}
 ```
 
-5. **PATCH** /tools/:id Content-Type: application/json *- atualiza informações de uma ferramenta*
+7. **PATCH** /tools/:id Content-Type: application/json *- atualiza informações de uma ferramenta*
 
 O corpo da requisição deve conter as informações da ferramenta a ser atualizada (id é ignorado)
 
