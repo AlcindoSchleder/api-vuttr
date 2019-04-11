@@ -223,7 +223,7 @@ Basta usar o docker run para rodar a imagem pronta
 docker run -d --restart=always --name api_mongo -p 27017:27017 \
     -v /opt/docker-image/data:/opt/data \
     -v /var/log/mongo:/var/log/mongo \
-    -it alcindo/api_mongo:1.0
+    -it alcindo/api_mongo:1.1
 
 docker run -d --restart=always --name api_vuttr -p 3000:3000 --links api_mongo \
     -v /opt/docker-image/api:/opt/node \
@@ -238,15 +238,15 @@ Necessário estar logado com uma conta docker
 
 ```bash
 docker build -f docker/server.dockerfile -t seu_usuario/api_vuttr:1.0 .
-docker build -f docker/mongo.dockerfile -t seu_usuario/api_mongo:1.0 .
+docker build -f docker/mongo.dockerfile -t seu_usuario/api_mongo:1.1 .
 docker push seu_usuario/api_vuttr:1.0
-docker push seu_usuario/api_mongo:1.0
+docker push seu_usuario/api_mongo:1.1
 ```
 
 #### Iniciar containers com compose (aplicação + mongo)
 
 ```bash
 docker pull alcindo/api-vuttr:1.0
-docker pull alcindo/api-mongo:1.0
+docker pull alcindo/api-mongo:1.1
 docker-compose up -d
 ```
