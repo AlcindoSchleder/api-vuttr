@@ -51,12 +51,10 @@ class genTokenRoutes extends BaseRoute {
             },
             handler: async (request) => {
                 const {username, password, userSigned} = request.query;
-                console.log('query:', username, password, userSigned);
                 this.accessToken.route = APATH + '/get_user_token';
 
                 // Autentica o usuário com a senha padrão
                 const flagGen = ((username === USER_NAME) && (password === USER_PWRD));
-                console.log('flagGen:', flagGen);
                 const userData = {
                     data: {
                         id: Math.floor(Math.random() * (1000 - 500) + 500), // Generate a ramdom number
