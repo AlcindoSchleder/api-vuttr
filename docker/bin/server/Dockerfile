@@ -4,7 +4,7 @@
 FROM node:10-alpine
 
 # create application directories
-RUN && mkdir /opt/node \
+RUN mkdir /opt/node \
     && mkdir /opt/node/api-vuttr \
     && mkdir /opt/node/commom \
     && mkdir /etc/vktioapi \
