@@ -16,7 +16,7 @@ var context = {}
 
 var id = 0;
 
-describe.("Generate AccessToken -> JWT", function() {
+describe("Generate AccessToken -> JWT", function() {
     this.timeout(Infinity);
     before(async () => {      
         app = await api;
